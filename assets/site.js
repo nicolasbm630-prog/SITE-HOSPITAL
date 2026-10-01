@@ -15,7 +15,7 @@
   const savedTheme = store.get("mc-theme", null);
   if (savedTheme) root.dataset.theme = savedTheme;
   $("#themeBtn").addEventListener("click", () => {
-    const dark = root.dataset.theme ? root.dataset.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    const dark = root.dataset.theme === "dark";
     root.dataset.theme = dark ? "light" : "dark";
     store.set("mc-theme", root.dataset.theme);
   });
