@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedConnect — Estudo de caso UX/UI</title>
+  <meta name="description" content="Equipe de UX/UI do Projeto MedConnect: os 7 desafios, do problema ao teste de usabilidade.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<div class="topbar">
+  <div class="brand"><span class="brand-mark" aria-hidden="true">+</span>MedConnect</div>
+  <select id="jump" aria-label="Ir para a seção">
+    <option value="#visao">Visão geral</option>
+    <option value="#d1">1 · Problema</option>
+    <option value="#d2">2 · Jornada</option>
+    <option value="#d3">3 · User Flow</option>
+    <option value="#d4">4 · Heurísticas</option>
+    <option value="#d5">5 · Acessibilidade</option>
+    <option value="#d6">6 · Protótipo</option>
+    <option value="#d7">7 · Teste</option>
+  </select>
+</div>
+
+<div class="layout">
+  <aside class="sidebar" aria-label="Navegação do estudo de caso">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">+</span>MedConnect</div>
+    <p class="brand-sub">Rede Vida+ · Equipe de UX/UI</p>
+    <nav>
+      <ul class="nav" id="nav">
+        <li><a href="#visao"><span class="num">00</span><span>Visão geral</span></a></li>
+        <li><a href="#d1"><span class="num">01</span><span>Descobrir o verdadeiro problema</span></a></li>
+        <li><a href="#d2"><span class="num">02</span><span>Jornada do paciente</span></a></li>
+        <li><a href="#d3"><span class="num">03</span><span>Fluxo e fluxograma do site</span></a></li>
+        <li><a href="#d4"><span class="num">04</span><span>Caça aos problemas</span></a></li>
+        <li><a href="#d5"><span class="num">05</span><span>Projetar para todos</span></a></li>
+        <li><a href="#d6"><span class="num">06</span><span>Do papel ao protótipo</span></a></li>
+        <li><a href="#d7"><span class="num">07</span><span>Prove que é boa</span></a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="prototipo/" target="_blank" rel="noopener">Abrir protótipo ↗</a>
+    <button class="theme-btn" id="themeBtn" type="button">Alternar tema claro/escuro</button>
+  </aside>
+
+  <main id="conteudo" tabindex="-1">
+
+<!-- ============================ VISÃO GERAL ============================ -->
+<section class="block" id="visao" aria-labelledby="t-visao">
+  <span class="eyebrow">Estudo de caso · UX/UI</span>
+  <h1 id="t-visao">MedConnect: um app em que o paciente resolve sozinho, e com segurança</h1>
+  <p class="lead">A Rede Vida+ (8 hospitais, 14 clínicas, 6 laboratórios) cresceu por aquisições e herdou um sistema por unidade. Para o paciente, marcar consulta, marcar exame, ver resultado e tirar dúvida financeira são quatro caminhos diferentes. Esta é a solução da equipe para os 7 desafios.</p>
+
+  <div class="grid g4" style="margin:32px 0">
+    <div class="card"><div class="stat">28%</div><div class="stat-label">dos atendimentos são de pacientes com mais de 60 anos</div></div>
+    <div class="card"><div class="stat">18</div><div class="stat-label">opções simultâneas na tela inicial do sistema atual</div></div>
+    <div class="card"><div class="stat">3+</div><div class="stat-label">sistemas para consulta, exame e resultado</div></div>
+    <div class="card"><div class="stat">1</div><div class="stat-label">consulta cancelada por engano: o incidente com a Maria, 71 anos</div></div>
+  </div>
+
+  <h3>Como o trabalho foi organizado</h3>
+  <p class="muted">Seguimos as cinco camadas de experiência (Garrett): cada desafio decide uma camada antes de passar para a próxima. Nada de começar pelas cores.</p>
+  <div class="layers">
+    <div class="layer"><b>Estratégia</b><span>Quem usa e qual problema real resolvemos</span><a href="#d1" class="tag p">Desafio 1</a></div>
+    <div class="layer"><b>Escopo</b><span>Que tarefas a jornada exige e onde ela trava</span><a href="#d2" class="tag p">Desafio 2</a></div>
+    <div class="layer"><b>Estrutura</b><span>Fluxo, decisões, erros e caminhos de recuperação</span><a href="#d3" class="tag p">Desafio 3</a></div>
+    <div class="layer"><b>Esqueleto</b><span>Wireframes, heurísticas e prevenção de erro</span><a href="#d4" class="tag p">Desafios 4 e 6</a></div>
+    <div class="layer"><b>Superfície</b><span>Contraste, tipografia, acessibilidade e protótipo navegável</span><a href="#d5" class="tag p">Desafios 5 e 6</a></div>
+  </div>
+
+  <div class="callout danger" style="margin-top:28px">
+    <p><strong>Por que isso não é estética.</strong> Maria, 71 anos, apertou "CANCELAR" achando que ia voltar. Cancelou a consulta de cardiologia. Não houve confirmação nem "Desfazer", e quando ela tentou remarcar não havia mais horário naquela semana. Toda decisão deste projeto é testada contra uma pergunta: <em>isso teria evitado o que aconteceu com a Maria?</em></p>
+  </div>
+</section>
+
+<!-- ============================ DESAFIO 1 ============================ -->
+<section class="block" id="d1" aria-labelledby="t-d1">
+  <span class="eyebrow">Desafio 1 · Estratégia</span>
+  <h2 id="t-d1">Descobrir o verdadeiro problema</h2>
+  <p class="deliverable"><span><strong>Entrega:</strong> definição do problema, duas personas prioritárias e pelo menos 5 necessidades de cada uma.</span></p>
+
+  <h3>O pedido versus o problema</h3>
+  <div class="grid g2">
+    <div class="card">
+      <span class="tag">O que a diretoria pediu</span>
+      <p class="quote" style="margin-top:12px">"Precisamos de um aplicativo moderno para marcar consultas."</p>
+      <p class="muted small" style="margin-top:12px">Esse pedido descreve uma solução ("app moderno") e uma única tarefa ("marcar"). Não diz para quem, nem o que hoje dá errado.</p>
+    </div>
+    <div class="card" style="border:2px solid var(--primary)">
+      <span class="tag p">Problema de UX</span>
+      <p style="margin-top:12px;font-size:1.1rem"><strong>Pacientes da Rede Vida+, principalmente idosos e pessoas com baixa visão, não conseguem resolver sozinhos e com segurança suas tarefas de cuidado</strong> (agendar, acompanhar, alterar, cancelar e ver resultados). A experiência está espalhada em vários sistemas, usa linguagem técnica, não confirma o que aconteceu e permite erros sem volta.</p>
+      <p class="muted small">Consequências: ligações para a central, consultas perdidas, insegurança e dependência de terceiros.</p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <p><strong>Como podemos…</strong> permitir que qualquer paciente, inclusive quem tem mais de 60 anos ou baixa visão, marque, acompanhe e altere seus atendimentos em um único lugar, entendendo cada passo e sem medo de errar?</p>
+  </div>
+
+  <h3>O que as entrevistas realmente dizem</h3>
+  <p class="muted">Cada reclamação aponta para uma causa raiz, e cada causa pertence a uma camada do projeto.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Fala do paciente</th><th>Causa raiz</th><th>Camada</th></tr></thead>
+      <tbody>
+        <tr><td>"Eu não sei se estou marcando consulta ou exame."</td><td>Arquitetura da informação confusa; categorias com nomes do sistema, não do paciente</td><td><span class="tag p">Estrutura</span></td></tr>
+        <tr><td>"Aparecem vários nomes médicos que eu não entendo."</td><td>Jargão técnico e administrativo (TISS, SADT…)</td><td><span class="tag p">Superfície</span></td></tr>
+        <tr><td>"Depois que clico em confirmar, fico sem saber se realmente foi agendado."</td><td>Falta de feedback e de visibilidade do status</td><td><span class="tag p">Esqueleto</span></td></tr>
+        <tr><td>"Minha mãe não consegue usar porque as letras são muito pequenas."</td><td>Tipografia e contraste inadequados (WCAG: perceptível)</td><td><span class="tag p">Superfície</span></td></tr>
+        <tr><td>"Quando erro alguma coisa, aparece uma mensagem que não explica o que aconteceu."</td><td>Mensagens de erro técnicas, sem caminho de recuperação</td><td><span class="tag p">Esqueleto</span></td></tr>
+        <tr><td>"Não consigo descobrir onde cancelo uma consulta."</td><td>Ação importante escondida; sem uma área "Minhas consultas"</td><td><span class="tag p">Estrutura</span></td></tr>
+        <tr><td>"Para encontrar o resultado do exame tenho que entrar em outro sistema."</td><td>Fragmentação: um sistema por serviço</td><td><span class="tag p">Escopo</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Os quatro perfis</h3>
+  <div class="grid g4">
+    <article class="card persona">
+      <div class="persona-head"><div class="avatar" aria-hidden="true">C</div><div><h4 style="margin:0">Carlos, 24</h4><span class="small muted">Trabalha com tecnologia</span></div></div>
+      <dl>
+        <dt>Objetivo</dt><dd>Marcar dermatologista em menos de 2 minutos</dd>
+        <dt>Dor</dt><dd>Preencher o que o sistema já sabe</dd>
+        <dt>Contexto</dt><dd>Celular, no intervalo, com pressa</dd>
+      </dl>
+    </article>
+    <article class="card persona pick">
+      <div class="persona-head"><div class="avatar" aria-hidden="true" style="background:var(--primary-soft);color:var(--primary)">H</div><div><h4 style="margin:0">Dona Helena, 68</h4><span class="tag p">Prioritária</span></div></div>
+      <dl>
+        <dt>Objetivo</dt><dd>Marcar sem ajuda e sem medo de errar</dd>
+        <dt>Dor</dt><dd>Letra pequena, ícone sem texto, muitas opções</dd>
+        <dt>Contexto</dt><dd>Em casa, Android com fonte grande; usa WhatsApp e app de banco</dd>
+      </dl>
+    </article>
+    <article class="card persona pick">
+      <div class="persona-head"><div class="avatar" aria-hidden="true" style="background:var(--primary-soft);color:var(--primary)">M</div><div><h4 style="margin:0">Marcelo, 42</h4><span class="tag p">Prioritária</span></div></div>
+      <dl>
+        <dt>Objetivo</dt><dd>Usar o sistema de forma independente</dd>
+        <dt>Dor</dt><dd>Pouco contraste, botões pequenos, info só por cor</dd>
+        <dt>Contexto</dt><dd>Baixa visão; zoom de 200% a 400% e ampliador de tela</dd>
+      </dl>
+    </article>
+    <article class="card persona">
+      <div class="persona-head"><div class="avatar" aria-hidden="true">A</div><div><h4 style="margin:0">Ana, 37</h4><span class="small muted">Mãe de dois</span></div></div>
+      <dl>
+        <dt>Objetivo</dt><dd>Agendar para a família inteira</dd>
+        <dt>Dor</dt><dd>Repetir o mesmo processo várias vezes</dd>
+        <dt>Contexto</dt><dd>À noite, com interrupções</dd>
+      </dl>
+    </article>
+  </div>
+
+  <h3>Por que Helena e Marcelo</h3>
+  <div class="grid g2">
+    <div class="card">
+      <ul class="ticks">
+        <li><strong>É onde está o risco.</strong> 28% dos atendimentos são de pessoas com mais de 60 anos, e o incidente da Maria (71) tem exatamente o perfil da Helena.</li>
+        <li><strong>É um requisito, não uma melhoria.</strong> A diretoria determinou que acessibilidade não pode ficar para depois. Marcelo é quem mostra se o sistema é perceptível e operável de verdade.</li>
+        <li><strong>Projetar para os extremos beneficia todos.</strong> Um fluxo claro, sem jargão e com uma decisão por tela também é o mais rápido para o Carlos.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4>E os outros dois?</h4>
+      <p class="small"><strong>Carlos</strong> é atendido como efeito colateral: dados pré-preenchidos, convênio já filtrado e atalho "Próxima semana".</p>
+      <p class="small" style="margin:0"><strong>Ana</strong> entra como requisito secundário: um seletor "Para quem é a consulta?" no início do agendamento, com os dependentes já cadastrados.</p>
+    </div>
+  </div>
+
+  <h3>Necessidades das personas prioritárias</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h4>Helena: segurança e clareza</h4>
+      <ol class="needs">
+        <li>Ler tudo sem precisar ampliar: texto base de 18 px ou mais.</li>
+        <li>Poucas opções por tela, com nomes em português do dia a dia.</li>
+        <li>Revisar todos os dados numa tela própria antes de confirmar.</li>
+        <li>Ter certeza de que deu certo: tela de sucesso e cópia por WhatsApp ou SMS.</li>
+        <li>Ser protegida de erros: ações destrutivas separadas, com confirmação e "Desfazer".</li>
+        <li>Poder voltar a qualquer momento sem perder o que já escolheu.</li>
+        <li>Ter uma saída humana visível ("Falar com a central") quando travar.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Marcelo: independência</h4>
+      <ol class="needs">
+        <li>Contraste de texto de no mínimo 4,5:1, com 7:1 como meta.</li>
+        <li>Layout que reorganiza com zoom de 200% a 400% sem rolagem horizontal.</li>
+        <li>Alvos de toque grandes (48 px ou mais) e bem espaçados.</li>
+        <li>Nenhuma informação transmitida só por cor: sempre ícone e texto.</li>
+        <li>Foco visível e ordem lógica, compatível com leitor de tela e ampliador.</li>
+        <li>Respeito às configurações do sistema: tamanho de fonte, alto contraste, menos movimento.</li>
+        <li>Mudanças de estado anunciadas ("Confirmando…", "Consulta marcada").</li>
+      </ol>
+    </div>
+  </div>
+
+  <h3 id="criterios">Critérios de sucesso (medidos no Desafio 7)</h3>
+  <p class="muted">Definimos agora o que significa "resolver o problema", para não julgar o resultado depois pela aparência.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Critério</th><th>Meta</th><th>Liga com</th></tr></thead>
+      <tbody>
+        <tr><td><b>C1</b></td><td>Taxa de conclusão da tarefa de agendar (T1) sem ajuda</td><td>≥ 80%</td><td>"Resolver sozinho"</td></tr>
+        <tr><td><b>C2</b></td><td>Tempo mediano para agendar (T1)</td><td>≤ 3 min</td><td>Carlos e eficiência</td></tr>
+        <tr><td><b>C3</b></td><td>Taxa de erro em T1 (erros por tentativa)</td><td>≤ 1,0</td><td>Jargão e excesso de opções</td></tr>
+        <tr><td><b>C4</b></td><td>Conclusão da tarefa de alterar ou cancelar (T2) sem ajuda, e cancelamentos acidentais</td><td>≥ 80% e 0</td><td>Incidente da Maria</td></tr>
+        <tr><td><b>C5</b></td><td>Participantes que sabem dizer se a consulta foi marcada e para quando</td><td>100%</td><td>"Fico sem saber se foi agendado"</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ============================ DESAFIO 2 ============================ -->
+<section class="block" id="d2" aria-labelledby="t-d2">
+  <span class="eyebrow">Desafio 2 · Escopo</span>
+  <h2 id="t-d2">Jornada do paciente</h2>
+  <p class="deliverable"><span><strong>Entrega:</strong> mapa completo da jornada e pelo menos 5 pontos de fricção.</span></p>
+
+  <div class="callout">
+    <p><strong>Cenário:</strong> Dona Helena precisa encontrar um cardiologista, verificar se ele atende o convênio dela (Saúde Plena), escolher uma unidade próxima e marcar uma consulta para a próxima semana. O clínico geral pediu uma avaliação depois de um exame de rotina. Jornada mapeada com o <strong>sistema atual</strong>.</p>
+  </div>
+
+  <h3>Curva emocional</h3>
+  <div class="card" style="padding:16px">
+    <svg id="emoChart" class="emo-chart" viewBox="0 0 960 230" role="img" aria-labelledby="emoTitle emoDesc">
+      <title id="emoTitle">Curva emocional da jornada atual da Helena</title>
+      <desc id="emoDesc">Começa preocupada, cai para frustrada na busca, melhora um pouco no agendamento, volta a cair na confirmação por falta de feedback, e só fica positiva no comparecimento.</desc>
+    </svg>
+  </div>
+
+  <h3>Mapa da jornada</h3>
+  <p class="muted small">Role a tabela para os lados para ver todas as etapas.</p>
+  <div class="journey" tabindex="0" role="region" aria-label="Mapa da jornada, tabela com rolagem horizontal">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">Etapa</th>
+          <th scope="col"><span class="stage-n">1</span>Necessidade</th>
+          <th scope="col"><span class="stage-n">2</span>Entrada no sistema</th>
+          <th scope="col"><span class="stage-n">3</span>Busca</th>
+          <th scope="col"><span class="stage-n">4</span>Escolha</th>
+          <th scope="col"><span class="stage-n">5</span>Agendamento</th>
+          <th scope="col"><span class="stage-n">6</span>Confirmação</th>
+          <th scope="col"><span class="stage-n">7</span>Lembrete</th>
+          <th scope="col"><span class="stage-n">8</span>Comparecimento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Ação</th>
+          <td>Recebe o pedido do clínico e guarda o papel na bolsa</td>
+          <td>Abre o app antigo e tenta lembrar a senha</td>
+          <td>Procura "coração" entre 18 opções da tela inicial</td>
+          <td>Compara médicos, unidades e convênio</td>
+          <td>Escolhe dia e horário da próxima semana</td>
+          <td>Toca em "Confirmar" e espera</td>
+          <td>Recebe um e-mail 2 dias antes</td>
+          <td>Vai até a unidade e se apresenta na recepção</td>
+        </tr>
+        <tr>
+          <th scope="row">Objetivo</th>
+          <td>Marcar o quanto antes</td>
+          <td>Entrar na conta</td>
+          <td>Achar cardiologia</td>
+          <td>Médico que aceite o convênio, perto de casa</td>
+          <td>Um horário de manhã</td>
+          <td>Ter certeza de que marcou</td>
+          <td>Não esquecer a consulta</td>
+          <td>Ser atendida sem atraso</td>
+        </tr>
+        <tr>
+          <th scope="row">Dúvida</th>
+          <td>"Preciso do pedido? Meu convênio cobre?"</td>
+          <td>"É CPF ou número da carteirinha?"</td>
+          <td>"Isso é consulta ou exame? O que é Prestador Referenciado?"</td>
+          <td>"Esse médico atende Saúde Plena?"</td>
+          <td>"Se eu escolher errado, consigo trocar?"</td>
+          <td>"Deu certo? Travou? Aperto de novo?"</td>
+          <td>"Preciso levar alguma coisa? Em jejum?"</td>
+          <td>"Onde é a recepção? Vou ter que repetir meus dados?"</td>
+        </tr>
+        <tr>
+          <th scope="row">Emoção</th>
+          <td><span class="emo n1">Preocupada</span></td>
+          <td><span class="emo n1">Ansiosa</span></td>
+          <td><span class="emo n2">Frustrada</span></td>
+          <td><span class="emo n1">Insegura</span></td>
+          <td><span class="emo z">Neutra</span></td>
+          <td><span class="emo n2">Angustiada</span></td>
+          <td><span class="emo z">Neutra</span></td>
+          <td><span class="emo p1">Aliviada</span></td>
+        </tr>
+        <tr>
+          <th scope="row">Problema</th>
+          <td>Não há um ponto de entrada claro: site, app e telefone competem</td>
+          <td>Erro "ERROR AUTH-403"; letras pequenas; recuperar senha confuso</td>
+          <td>18 opções sem agrupamento; termos técnicos; precisa escolher a unidade antes da especialidade</td>
+          <td>Convênio só é verificado no fim, ou por telefone; "aceita" indicado só pela cor verde</td>
+          <td>Calendário minúsculo; horários somem sem aviso</td>
+          <td>8 segundos sem nenhum retorno; botões "Cancelar" e "Confirmar" iguais</td>
+          <td>Só por e-mail, sem instruções; não diz como cancelar</td>
+          <td>Recepção pede de novo os dados que o app já tem</td>
+        </tr>
+        <tr>
+          <th scope="row">Oportunidade</th>
+          <td>Um único botão "Agendar" no app, que serve para consulta e exame</td>
+          <td>Login por CPF, mensagens claras, "Esqueci minha senha" visível, biometria</td>
+          <td>4 ações na tela inicial; especialidade com descrição simples ("Coração e pressão") e busca por sinônimo</td>
+          <td>Filtro "atende seu convênio" ligado por padrão, com selo em texto e ícone</td>
+          <td>Atalho "Próxima semana"; horários agrupados em Manhã e Tarde; botões grandes</td>
+          <td>Tela de revisão; botão vira "Confirmando…" na hora; tela de sucesso com protocolo</td>
+          <td>Lembrete por WhatsApp com "o que levar", endereço e botões "Remarcar" ou "Cancelar"</td>
+          <td>Check-in pelo app; depois da consulta, receitas e pedidos de exame no mesmo app</td>
+        </tr>
+        <tr>
+          <th scope="row">Ponto de contato</th>
+          <td>Consultório, papel</td>
+          <td>App</td>
+          <td>App</td>
+          <td>App e telefone</td>
+          <td>App</td>
+          <td>App e e-mail</td>
+          <td>E-mail</td>
+          <td>Recepção da unidade</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Pontos de fricção</h3>
+  <div class="grid g2">
+    <div class="card friction"><div class="fnum">F1</div><div><h4>Entrada travada</h4><p class="small">Erro técnico no login e nenhuma pista de como recuperar a senha. A jornada pode acabar aqui.</p><span class="tag a">Resolvido na tela 1 e na tela 12</span></div></div>
+    <div class="card friction"><div class="fnum">F2</div><div><h4>Paralisia na busca</h4><p class="small">18 opções, "consulta" e "exame" misturados, jargão. Lei de Hick: mais opções, decisão mais lenta e mais erros.</p><span class="tag a">Resolvido nas telas 2, 3 e 4</span></div></div>
+    <div class="card friction"><div class="fnum">F3</div><div><h4>Convênio descoberto tarde</h4><p class="small">A paciente só descobre que o médico não atende o convênio depois de escolher tudo, ou pelo telefone.</p><span class="tag a">Resolvido na tela 5</span></div></div>
+    <div class="card friction"><div class="fnum">F4</div><div><h4>Silêncio depois de "Confirmar"</h4><p class="small">8 segundos sem retorno levam a toques repetidos, agendamentos duplicados ou desistência.</p><span class="tag a">Resolvido nas telas 8 e 9</span></div></div>
+    <div class="card friction"><div class="fnum">F5</div><div><h4>Cancelamento perigoso e escondido</h4><p class="small">Difícil de achar quando se quer cancelar, e fácil de acionar sem querer: é o caso da Maria.</p><span class="tag a">Resolvido nas telas 10 e 11</span></div></div>
+    <div class="card friction"><div class="fnum">F6</div><div><h4>Resultado em outro sistema</h4><p class="small">Depois da consulta, o exame pedido e o resultado ficam em portais separados, com outro login.</p><span class="tag a">Resolvido com a aba "Resultados"</span></div></div>
+    <div class="card friction"><div class="fnum">F7</div><div><h4>Lembrete inútil</h4><p class="small">Só por e-mail, sem orientação de preparo e sem um caminho para remarcar.</p><span class="tag a">Resolvido com o lembrete por WhatsApp</span></div></div>
+  </div>
+</section>
+
+<!-- ============================ DESAFIO 3 ============================ -->
+<section class="block" id="d3" aria-labelledby="t-d3">
+  <span class="eyebrow">Desafio 3 · Estrutura</span>
+  <h2 id="t-d3">Fluxo do sistema</h2>
+  <p class="deliverable"><span><strong>Entrega:</strong> diagrama completo do User Flow, com fluxo principal, decisões, erros e caminhos de recuperação.</span></p>
+
+  <p>A espinha central é o caminho feliz. Cada losango é uma decisão do sistema. Cada caixa vermelha é um erro, e cada uma tem uma seta tracejada de volta. <strong>Nenhuma tela termina sem saída.</strong></p>
+
+  <div class="legend" aria-hidden="true">
+    <span><i class="sw t"></i>Início e fim</span>
+    <span><i class="sw n"></i>Tela ou ação</span>
+    <span><i class="sw d"></i>Decisão</span>
+    <span><i class="sw e"></i>Erro ou exceção</span>
+    <span><i class="sw r"></i>Caminho de recuperação</span>
+  </div>
+  <div class="flow-wrap">
+    <svg id="flow" viewBox="0 0 1000 2040" role="img" aria-labelledby="flowTitle flowDesc">
+      <title id="flowTitle">User Flow do agendamento de consulta no MedConnect</title>
+      <desc id="flowDesc">Fluxo do login até a confirmação, com nove situações de exceção e seus caminhos de volta. Há uma versão completa em texto logo abaixo do diagrama.</desc>
+    </svg>
+  </div>
+
+  <details class="textalt">
+    <summary>Ver o fluxo em texto (versão acessível)</summary>
+    <ol>
+      <li>Abre o MedConnect. <b>Tem conta?</b> Não: <em>Criar conta</em> (CPF, nome, celular e convênio), que entra já logada e vai para o Início.</li>
+      <li>Login com CPF e senha. <b>Dados corretos?</b> Não: mensagem "CPF ou senha não conferem" com "Esqueci minha senha" (código por SMS), e volta ao Login.</li>
+      <li>Início, depois Agendar atendimento. "Para quem é?" (eu ou dependente), depois Consulta com médico.</li>
+      <li>Especialidade. <b>Há médico com agenda?</b> Não: tela "Sem horários" com alternativas (lista de espera, teleconsulta, outra especialidade, central) e volta para Especialidade.</li>
+      <li>Médico. <b>Atende seu convênio?</b> Não: aviso com duas saídas, "Ver médicos que atendem" ou "Seguir como particular (R$ 380)", e volta para Médico.</li>
+      <li>Unidade, depois Data, depois Horário, depois Revisão. Na revisão cada item tem "Alterar", que volta direto para a etapa mantendo o resto. É o caso "quero alterar o médico".</li>
+      <li>Confirmar agendamento: o botão vira "Confirmando…". <b>Conexão ok?</b> Não: "Sem conexão. Suas escolhas foram guardadas", com "Tentar de novo", e volta para Revisão.</li>
+      <li><b>Horário ainda livre?</b> Não: "Esse horário acabou de ser ocupado", com os 3 horários mais próximos, e volta para Horário mantendo médico, unidade e data.</li>
+      <li>Confirmação: protocolo, cópia por WhatsApp e e-mail, adicionar à agenda.</li>
+      <li>Minhas consultas, depois Detalhe. <b>O que deseja?</b> Remarcar: volta para Unidade ou Data, mantendo o médico. Cancelar: tela de confirmação com os detalhes. <b>Confirma?</b> Não: volta ao Detalhe. Sim: "Consulta cancelada", com "Desfazer".</li>
+      <li>Em qualquer etapa: <em>Voltar</em> mantém as escolhas; <em>Sair do agendamento</em> pergunta "Quer mesmo sair?" com "Continuar agendando" e "Sair". Ninguém perde dados por um toque.</li>
+    </ol>
+  </details>
+
+  <h3>As 9 situações e como cada uma termina</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Situação</th><th>O que o paciente vê</th><th>Saída</th></tr></thead>
+      <tbody>
+        <tr><td>Não tem cadastro</td><td>"Criar conta" visível já na tela de login; pede só CPF, nome, celular e convênio</td><td>Entra logado, direto no Início</td></tr>
+        <tr><td>Senha incorreta</td><td>"CPF ou senha não conferem. Confira e tente de novo." e "Esqueci minha senha"</td><td>Login de novo; depois de 5 tentativas, código por SMS</td></tr>
+        <tr><td>Convênio não aceito</td><td>"Dr. Otávio não atende Saúde Plena" e o valor particular</td><td>Ver médicos que atendem, ou seguir como particular</td></tr>
+        <tr><td>Nenhum médico disponível</td><td>"Neurologia está sem horários nas próximas semanas"</td><td>Lista de espera, teleconsulta, outra especialidade ou central</td></tr>
+        <tr><td>Horário ficou indisponível</td><td>"Esse horário acabou de ser ocupado por outra pessoa"</td><td>Escolher um dos 3 horários mais próximos; o resto é mantido</td></tr>
+        <tr><td>Falha de conexão</td><td>"Sem conexão. Suas escolhas foram guardadas."</td><td>Tentar de novo, sem risco de marcar duas vezes</td></tr>
+        <tr><td>Quer voltar</td><td>Botão "Voltar" fixo no topo de todas as telas</td><td>Etapa anterior, com a escolha mantida</td></tr>
+        <tr><td>Quer alterar o médico</td><td>Link "Alterar" ao lado do médico na revisão</td><td>Tela Médico; depois volta direto para a revisão</td></tr>
+        <tr><td>Quer cancelar a operação</td><td>"Sair do agendamento?" com "Continuar agendando" em destaque</td><td>Início, ou continua de onde parou</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 id="mapa" style="margin-top:48px">Fluxograma do site: todas as telas do app</h3>
+  <p class="muted">O fluxo acima detalha o agendamento. Este mapa mostra o app inteiro: de onde se chega a cada tela e como se volta. Tudo parte do <strong>Início</strong>, e as quatro áreas principais ficam sempre a um toque na barra inferior.</p>
+  <div class="legend" aria-hidden="true">
+    <span><i class="sw t"></i>Entrada e resultado final</span>
+    <span><i class="sw n" style="background:var(--primary-soft)"></i>Área principal</span>
+    <span><i class="sw n"></i>Tela</span>
+    <span><i class="sw d"></i>Decisão</span>
+    <span><i class="sw e"></i>Erro ou ação destrutiva</span>
+    <span><i class="sw r"></i>Volta ou recuperação</span>
+  </div>
+  <div class="flow-wrap">
+    <svg id="sitemap" viewBox="0 0 1290 990" role="img" aria-labelledby="smTitle smDesc">
+      <title id="smTitle">Fluxograma de navegação do app MedConnect</title>
+      <desc id="smDesc">Do login ao Início, e do Início para as cinco áreas: Agendar, Minhas consultas, Resultados, Mais serviços e Perfil. A versão em texto está logo abaixo.</desc>
+    </svg>
+  </div>
+  <details class="textalt">
+    <summary>Ver o fluxograma em texto (versão acessível)</summary>
+    <ol>
+      <li><b>Entrada:</b> abre o app e cai no Login. Sem conta: Criar conta (CPF, nome, celular, convênio), que entra direto no Início. Esqueceu a senha: código por SMS, e volta ao Login.</li>
+      <li><b>Início:</b> mostra a próxima consulta e 4 atalhos (Agendar, Minhas consultas, Resultados, Mais serviços), além de "Falar com a central".</li>
+      <li><b>Agendar:</b> Para quem é e tipo, Especialidade, Médico, Unidade, Data e horário, Revisão e Consulta marcada. Exceções: sem horários (lista de espera), convênio não aceito (outro médico ou particular), sem conexão ou horário ocupado (tentar de novo ou escolher outro horário).</li>
+      <li><b>Minhas consultas:</b> Detalhe da consulta. Remarcar: Unidade, Data e horário, Revisão da alteração, Consulta alterada. Cancelar: confirmação; "Não, manter" volta ao Detalhe; "Sim" cancela, com "Desfazer" por 10 s e "Reativar" depois.</li>
+      <li><b>Resultados:</b> lista de exames (prontos e em análise), resultado do exame, baixar PDF ou compartilhar.</li>
+      <li><b>Mais serviços:</b> carteirinha, convênio, dependentes, receitas, pedidos de exame, atestados, pagamentos, central e perguntas frequentes.</li>
+      <li><b>Perfil:</b> acessibilidade (tamanho do texto e alto contraste), dependentes e sair da conta, que volta ao Login.</li>
+      <li><b>Sempre disponível:</b> barra inferior (Início, Consultas, Resultados, Perfil) e Ajuda no topo; nas etapas, Voltar e Sair com confirmação.</li>
+    </ol>
+  </details>
+</section>
+
+<!-- ============================ DESAFIO 4 ============================ -->
+<section class="block" id="d4" aria-labelledby="t-d4">
+  <span class="eyebrow">Desafio 4 · Esqueleto</span>
+  <h2 id="t-d4">Caça aos problemas de usabilidade</h2>
+  <p class="deliverable"><span><strong>Entrega:</strong> tabela com problema, heurística violada, consequência, severidade de 0 a 4 e solução.</span></p>
+
+  <div class="grid g2" style="margin-bottom:20px">
+    <div class="card small">
+      <h4>Escala de severidade (Nielsen)</h4>
+      <p style="margin:0"><b>0</b> não é problema · <b>1</b> cosmético · <b>2</b> menor · <b>3</b> grave, prioridade alta · <b>4</b> catástrofe, corrigir antes de lançar</p>
+    </div>
+    <div class="card small">
+      <h4>Como classificamos</h4>
+      <p style="margin:0">Frequência × impacto × persistência. Pesa mais o que atinge Helena e Marcelo, e o que <b>não tem volta</b>.</p>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Problema</th><th>Heurística violada</th><th>Consequência para o usuário</th><th>Sev.</th><th>Solução proposta</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>1</td><td>"Cancelar consulta" fica ao lado de "Voltar"</td>
+          <td><b>H5</b> Prevenção de erros<br><span class="muted small">+ H3 Controle e liberdade</span></td>
+          <td>Cancelamento acidental de uma consulta real. É exatamente o incidente da Maria.</td>
+          <td class="sev"><span class="sev-badge sev-4" aria-label="Severidade 4">4</span></td>
+          <td>"Voltar" como seta no topo. "Cancelar esta consulta" isolado no fim da tela, com contorno vermelho, ícone e rótulo específico. Lei de Fitts ao contrário: afastar ações opostas.</td>
+        </tr>
+        <tr>
+          <td>2</td><td>Ao excluir uma consulta não existe confirmação</td>
+          <td><b>H5</b> Prevenção de erros</td>
+          <td>Um toque apaga a consulta e libera o horário para outra pessoa.</td>
+          <td class="sev"><span class="sev-badge sev-4" aria-label="Severidade 4">4</span></td>
+          <td>Tela de confirmação com os dados da consulta e o que vai acontecer. Botões com verbo: "Não, manter consulta" (principal) e "Sim, cancelar consulta".</td>
+        </tr>
+        <tr>
+          <td>3</td><td>O usuário não consegue desfazer certas ações</td>
+          <td><b>H3</b> Controle e liberdade do usuário</td>
+          <td>Medo de usar o app; um erro vira prejuízo permanente.</td>
+          <td class="sev"><span class="sev-badge sev-3" aria-label="Severidade 3">3</span></td>
+          <td>"Desfazer" por 10 s depois de cancelar, e "Reativar" na lista enquanto o horário estiver livre. "Voltar" mantém as escolhas.</td>
+        </tr>
+        <tr>
+          <td>4</td><td>Depois de "Confirmar", nada aparece por 8 segundos</td>
+          <td><b>H1</b> Visibilidade do status do sistema</td>
+          <td>Acha que travou: toca de novo (agendamento duplicado), sai do app ou liga para a central.</td>
+          <td class="sev"><span class="sev-badge sev-3" aria-label="Severidade 3">3</span></td>
+          <td>Em menos de 100 ms o botão vira "Confirmando…" com indicador e fica bloqueado. Depois de 3 s, aparece "Ainda estamos confirmando, não feche o app". Envio idempotente.</td>
+        </tr>
+        <tr>
+          <td>5</td><td>Erro de login aparece como "ERROR AUTH-403"</td>
+          <td><b>H9</b> Ajudar a reconhecer, diagnosticar e recuperar erros</td>
+          <td>Não sabe se errou o CPF, a senha ou se o sistema caiu. Desiste.</td>
+          <td class="sev"><span class="sev-badge sev-3" aria-label="Severidade 3">3</span></td>
+          <td>"CPF ou senha não conferem. Confira e tente de novo, ou toque em Esqueci minha senha." O código técnico fica escondido em "Detalhes para o suporte".</td>
+        </tr>
+        <tr>
+          <td>6</td><td>Termos como "Elegibilidade TISS", "Prestador Referenciado", "Guia SADT"</td>
+          <td><b>H2</b> Correspondência entre o sistema e o mundo real</td>
+          <td>Não entende o que está escolhendo; escolhe errado ou liga para a central.</td>
+          <td class="sev"><span class="sev-badge sev-3" aria-label="Severidade 3">3</span></td>
+          <td>Linguagem do paciente: "Seu convênio cobre?", "Médico da rede", "Pedido de exame". Quando o termo técnico for inevitável, explicar com "O que é isso?".</td>
+        </tr>
+        <tr>
+          <td>7</td><td>A tela tem 17 opções simultâneas</td>
+          <td><b>H8</b> Estética e design minimalista<br><span class="muted small">+ H6 Reconhecer em vez de lembrar</span></td>
+          <td>Paralisia de escolha (Hick); a tarefa principal se perde entre as secundárias.</td>
+          <td class="sev"><span class="sev-badge sev-3" aria-label="Severidade 3">3</span></td>
+          <td>4 ações principais na tela inicial (Agendar, Minhas consultas, Resultados, Mais serviços); o restante agrupado em "Mais serviços" por categoria, validado com card sorting.</td>
+        </tr>
+        <tr>
+          <td>8</td><td>Alguns botões mudam de nome entre telas</td>
+          <td><b>H4</b> Consistência e padrões</td>
+          <td>Dúvida se é a mesma ação, releitura constante, insegurança (Helena).</td>
+          <td class="sev"><span class="sev-badge sev-2" aria-label="Severidade 2">2</span></td>
+          <td>Vocabulário controlado no design system: "Continuar", "Voltar", "Confirmar agendamento", "Alterar". O mesmo rótulo para a mesma ação, sempre.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="small muted" style="margin-top:12px">Ordem de correção: primeiro os dois itens de severidade 4, que juntos reproduzem o incidente da Maria, depois os de severidade 3 que bloqueiam a tarefa principal.</p>
+</section>
+
+<!-- ============================ DESAFIO 5 ============================ -->
+<section class="block" id="d5" aria-labelledby="t-d5">
+  <span class="eyebrow">Desafio 5 · Superfície</span>
+  <h2 id="t-d5">Projetar para todos</h2>
+  <p class="deliverable"><span><strong>Entrega:</strong> checklist de acessibilidade com justificativa das decisões.</span></p>
+
+  <p>Auditoria pelos quatro princípios WCAG 2.2. Meta mínima: <strong>nível AA</strong>; nos pontos que mais afetam Helena e Marcelo, buscamos <strong>AAA</strong>. Auditoria feita no protótipo em 1º de outubro de 2026: cada item mostra o que foi medido. Se uma nova versão quebrar algum item, desmarque-o.</p>
+
+  <div class="card" style="margin:20px 0">
+    <div style="display:flex;justify-content:space-between;gap:12px;margin-bottom:8px"><strong>Itens verificados</strong><span id="a11yCount">0 de 0</span></div>
+    <div class="progress" role="progressbar" aria-labelledby="a11yCount" id="a11yBar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i></i></div>
+  </div>
+
+  <div class="grid g2" id="a11yList"></div>
+  <div class="callout warn" style="margin-top:20px">
+    <p><strong>Ainda falta um teste com pessoas.</strong> A auditoria cobre o que dá para medir na interface. O teste com leitor de tela de verdade (NVDA no computador, TalkBack no Android) e com quem usa ampliação no dia a dia entra no Desafio 7, com um avaliador no papel do Marcelo.</p>
+  </div>
+</section>
+
+<!-- ============================ DESAFIO 6 ============================ -->
+<section class="block" id="d6" aria-labelledby="t-d6">
+  <span class="eyebrow">Desafio 6 · Esqueleto e superfície</span>
+  <h2 id="t-d6">Do papel ao protótipo</h2>
+  <p class="deliverable"><span><strong>Entrega:</strong> wireframes, protótipo navegável e justificativa de pelo menos 5 decisões de UX.</span></p>
+
+  <h3>Etapa 1: wireframes de baixa fidelidade</h3>
+  <p class="muted">Só estrutura e hierarquia: sem cor, sem marca, sem foto. As notas vermelhas são decisões que precisavam ser validadas antes de qualquer acabamento.</p>
+  <div class="wf-grid" id="wireframes"></div>
+
+  <h3 style="margin-top:56px">Etapa 2: protótipo navegável de média fidelidade</h3>
+  <div class="proto-embed">
+    <iframe class="proto-frame" src="prototipo/?embed=1" title="Protótipo navegável do MedConnect" loading="lazy"></iframe>
+    <div>
+      <p>As 12 telas pedidas, mais criar conta, "sem horários", convênio não aceito, resultados de exames e "Mais serviços". Funciona com mouse, toque e <strong>somente teclado</strong>.</p>
+      <ul class="ticks">
+        <li>Use qualquer CPF com 11 números e qualquer senha com 4 caracteres ou mais.</li>
+        <li><strong>Neurologia</strong> mostra o caso "nenhum médico disponível".</li>
+        <li>Em <strong>Cardiologia</strong>, desligue o filtro de convênio e escolha o Dr. Otávio para ver "convênio não aceito".</li>
+        <li>O painel do apresentador (na versão em tela cheia) simula senha incorreta, falha de conexão e horário ocupado.</li>
+      </ul>
+      <a class="btn" style="display:inline-block;text-decoration:none;margin-top:8px" href="prototipo/" target="_blank" rel="noopener">Abrir em tela cheia ↗</a>
+    </div>
+  </div>
+
+  <h3 style="margin-top:56px">Decisões de UX e por quê</h3>
+  <div class="card">
+    <div class="decision"><div class="dn">1</div><div>
+      <h4>Tela inicial com 4 ações, não 18</h4>
+      <p><b>Lei de Hick e de Miller.</b> O tempo de decisão cresce com o número de opções, e a memória de trabalho segura poucos itens. "Agendar" é o botão principal; consultas, resultados e "Mais serviços" vêm em seguida. As outras 14 funções foram agrupadas em "Mais serviços".</p>
+      <span class="tag">Resolve F2 · Heurística H8</span>
+    </div></div>
+    <div class="decision"><div class="dn">2</div><div>
+      <h4>Uma decisão por tela, com progresso visível</h4>
+      <p><b>Carga cognitiva.</b> Helena relê tudo antes de agir; uma pergunta por tela ("Qual especialidade?") reduz a releitura. "Etapa 3 de 6" mostra quanto falta. O "Voltar" mantém o que já foi escolhido.</p>
+      <span class="tag">Helena · H1 · H3</span>
+    </div></div>
+    <div class="decision"><div class="dn">3</div><div>
+      <h4>Ação destrutiva longe, diferente e confirmada</h4>
+      <p><b>Lei de Fitts ao contrário e H5.</b> Fitts diz que alvos grandes e próximos são mais fáceis de acertar, e é por isso que "Cancelar" não pode ficar perto de "Voltar". O cancelamento fica isolado no fim da tela, com contorno vermelho, ícone e rótulo completo, passa por uma tela de confirmação e ainda permite "Desfazer".</p>
+      <span class="tag d">Evita o caso Maria · H3 · H5</span>
+    </div></div>
+    <div class="decision"><div class="dn">4</div><div>
+      <h4>Revisão em linguagem natural e retorno imediato</h4>
+      <p><b>H1 Visibilidade do status.</b> Antes de confirmar, uma frase resume tudo: "Consulta de Cardiologia com Dra. Beatriz, terça, 6 de outubro, às 9h, no Hospital Vida+ Centro". O botão diz exatamente o que faz ("Confirmar agendamento") e muda para "Confirmando…" no mesmo instante. A tela de sucesso mostra o protocolo.</p>
+      <span class="tag">Resolve F4 · Critério C5</span>
+    </div></div>
+    <div class="decision"><div class="dn">5</div><div>
+      <h4>O sistema já sabe o convênio</h4>
+      <p><b>H6 Reconhecer em vez de lembrar e eficiência (H7).</b> O filtro "Só quem atende Saúde Plena" já vem ligado. Cada médico mostra "Atende seu convênio" com ícone e texto, nunca só com cor. É a dor do Carlos e a dúvida da Helena na mesma decisão.</p>
+      <span class="tag">Resolve F3 · Carlos · Marcelo</span>
+    </div></div>
+    <div class="decision"><div class="dn">6</div><div>
+      <h4>Padrões que a Helena já conhece</h4>
+      <p><b>Lei de Jakob.</b> As pessoas passam a maior parte do tempo em outros apps. Barra inferior com ícone e texto, como nos apps de banco; "Voltar" no canto superior esquerdo; listas com toque na linha inteira.</p>
+      <span class="tag">Helena · H4</span>
+    </div></div>
+    <div class="decision"><div class="dn">7</div><div>
+      <h4>Tipografia feita para baixa visão</h4>
+      <p>Fonte <b>Atkinson Hyperlegible</b>, criada pelo Braille Institute para distinguir letras parecidas (I, l, 1; O, 0). Texto base de 18 px, alvos de 56 px de altura e controle "Tamanho do texto" dentro do app. O layout tem uma coluna só e aguenta 400% de zoom.</p>
+      <span class="tag">Marcelo · WCAG 1.4.4 · 1.4.10</span>
+    </div></div>
+    <div class="decision"><div class="dn">8</div><div>
+      <h4>"Para quem é?" no começo, não no fim</h4>
+      <p>Ana agenda para três pessoas. Escolher o paciente primeiro deixa o resto do fluxo igual, e o convênio do dependente já é aplicado no filtro de médicos.</p>
+      <span class="tag">Ana · H7</span>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============================ DESAFIO 7 ============================ -->
+<section class="block" id="d7" aria-labelledby="t-d7">
+  <span class="eyebrow">Desafio 7 · Validação</span>
+  <h2 id="t-d7">Prove que sua interface é boa</h2>
+  <p class="deliverable"><span><strong>Entrega:</strong> teste com outro grupo (Think Aloud), métricas de conclusão, tempo e erro, e a resposta: a interface resolveu o problema do Desafio 1?</span></p>
+
+  <div class="callout warn">
+    <p><strong>Os resultados vêm do teste real.</strong> Esta seção traz o roteiro, as tarefas e uma planilha que calcula as métricas sozinha. Os números aparecem conforme vocês registram as sessões com o grupo avaliador; nada aqui é preenchido de antemão.</p>
+  </div>
+
+  <h3>1. Tarefas (entregue ao avaliador, uma por vez)</h3>
+  <p class="muted">Tarefas descrevem um objetivo, nunca o caminho. Imprima ou mostre o cartão; não leia em voz alta com ênfase em palavras da interface.</p>
+  <div class="grid g2">
+    <div class="task-card">
+      <div class="tid">T1 · PRINCIPAL</div>
+      <blockquote>"Você precisa marcar uma consulta com um cardiologista para a próxima semana, usando seu convênio. Faça isso sem pedir ajuda."</blockquote>
+      <p class="succ"><b>Sucesso:</b> chega à tela "Consulta marcada" com Cardiologia, um médico que atende Saúde Plena e uma data da próxima semana.</p>
+    </div>
+    <div class="task-card">
+      <div class="tid">T2 · PRINCIPAL</div>
+      <blockquote>"Você marcou uma consulta, mas percebeu que escolheu a unidade errada. Altere ou cancele o agendamento."</blockquote>
+      <p class="succ"><b>Sucesso:</b> remarca para outra unidade, ou cancela e confirma. Registre se houve <b>cancelamento acidental</b>.</p>
+    </div>
+    <div class="task-card">
+      <div class="tid">T3 · COMPLEMENTAR</div>
+      <blockquote>"Seu médico pediu um hemograma mês passado. Descubra se o resultado já saiu."</blockquote>
+      <p class="succ"><b>Sucesso:</b> abre o resultado do hemograma na aba Resultados.</p>
+    </div>
+    <div class="task-card">
+      <div class="tid">T4 · COMPLEMENTAR (ANA)</div>
+      <blockquote>"Marque uma consulta de clínica geral para o seu marido, José."</blockquote>
+      <p class="succ"><b>Sucesso:</b> a confirmação mostra "Paciente: José Souza".</p>
+    </div>
+  </div>
+  <p class="small muted" style="margin-top:12px">Dados para o avaliador: CPF 123.456.789-09, qualquer senha com 4 caracteres ou mais. O protótipo já começa com uma consulta de Clínica geral no Hospital Vida+ Norte, então a T2 funciona mesmo sem fazer a T1 antes. Entre um grupo e outro, use "Reiniciar protótipo" no painel do apresentador.</p>
+
+  <h3>2. Roteiro do moderador</h3>
+  <div class="grid g2">
+    <div class="card">
+      <h4>Antes (2 min)</h4>
+      <ol class="needs small">
+        <li>"Estamos testando o app, não você. Não existe resposta errada."</li>
+        <li>"Pense em voz alta: diga o que está procurando, o que espera que aconteça e o que te surpreende."</li>
+        <li>"Eu não vou poder ajudar, mas pode perguntar. Depois eu explico tudo."</li>
+        <li>Prepare o protótipo em tela cheia, com o painel do apresentador escondido.</li>
+        <li>Opcional: um avaliador faz o papel do Marcelo com zoom de 200% (Ctrl e +) ou navegando só pelo teclado.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Durante</h4>
+      <ol class="needs small">
+        <li>Entregue o cartão e inicie o cronômetro quando a pessoa disser "pronto".</li>
+        <li>Se ela ficar em silêncio por mais de 10 s: "O que você está pensando agora?"</li>
+        <li>Se pedir ajuda: "O que você faria se estivesse sozinho em casa?" Se insistir, ajude e marque "com ajuda".</li>
+        <li>Pare o cronômetro no critério de sucesso, se a pessoa desistir ou aos 5 min.</li>
+        <li>Anote as falas literais, principalmente surpresa, dúvida e frustração.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Depois de cada tarefa</h4>
+      <ol class="needs small">
+        <li>"Sua consulta foi marcada? Para quando e onde?" (critério C5)</li>
+        <li>"De 1 a 7, quanto foi fácil fazer isso?" (SEQ, Single Ease Question)</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>O que conta como erro</h4>
+      <ul class="ticks small">
+        <li>Tocar num item que leva para fora do caminho e precisar voltar</li>
+        <li>Escolher a especialidade, o médico ou a data errada</li>
+        <li>Ver uma mensagem de erro causada pela ação da pessoa</li>
+        <li>Cancelar sem querer, ou desistir no meio de uma ação</li>
+      </ul>
+      <p class="small muted" style="margin:8px 0 0">Explorar um item e voltar antes de agir não conta.</p>
+    </div>
+  </div>
+
+  <h3>3. Hipóteses do teste</h3>
+  <p class="muted">O que a equipe espera observar, escrito antes do teste. Cada hipótese é confirmada ou derrubada pelos números e falas das sessões.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Esperamos que…</th><th>Por que pode falhar</th><th>Como vamos saber</th></tr></thead>
+      <tbody>
+        <tr><td><b>1</b></td><td>Os avaliadores marquem a consulta da T1 sem ajuda e sem passar por "Mais serviços"</td><td>O botão "Agendar consulta ou exame" pode ser lido como só para exames</td><td>Taxa de conclusão de T1 e erros na tela inicial (C1, C3)</td></tr>
+        <tr><td><b>2</b></td><td>Ninguém escolha um dia desta semana quando a tarefa pede a próxima</td><td>A semana atual vem selecionada de início</td><td>Erros na tela de data e falas como "cadê a outra semana?"</td></tr>
+        <tr><td><b>3</b></td><td>Na T2, a maioria remarque em vez de cancelar</td><td>"Cancelar esta consulta" é o botão mais visível da tela de detalhe</td><td>Quantos escolhem remarcar e quantos cancelam (C4)</td></tr>
+        <tr><td><b>4</b></td><td>Nenhum cancelamento aconteça sem querer</td><td>A pessoa pode confirmar a tela de cancelamento sem ler</td><td>Campo "cancelamento acidental" no registro (C4)</td></tr>
+        <tr><td><b>5</b></td><td>Todos saibam dizer, ao final, que a consulta foi marcada e para quando</td><td>A tela de sucesso tem muita informação ao mesmo tempo</td><td>Pergunta pós-tarefa (C5)</td></tr>
+        <tr><td><b>6</b></td><td>Quem faz o papel do Marcelo (zoom 200% ou só teclado) também conclua a T1</td><td>Com zoom, a tela de horários fica longa e o botão "Continuar" sai da vista</td><td>Conclusão e tempo de T1 filtrados pelo perfil "Marcelo"</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>4. Registro das sessões</h3>
+  <div class="card">
+    <form id="logForm" autocomplete="off">
+      <div class="form-row">
+        <label class="f">Participante<input name="p" required placeholder="Ex.: P1"></label>
+        <label class="f">Perfil simulado
+          <select name="perfil"><option>Helena</option><option>Marcelo</option><option>Carlos</option><option>Ana</option><option>Outro</option></select>
+        </label>
+        <label class="f">Tarefa
+          <select name="t"><option>T1</option><option>T2</option><option>T3</option><option>T4</option></select>
+        </label>
+        <label class="f">Resultado
+          <select name="r"><option value="ok">Concluiu sozinho</option><option value="help">Concluiu com ajuda</option><option value="fail">Não concluiu</option></select>
+        </label>
+      </div>
+      <div class="form-row" style="margin-top:12px">
+        <div class="f" style="display:grid;gap:6px;font-size:.9rem;font-weight:700">Cronômetro
+          <div class="stopwatch"><output id="sw" aria-live="off">00:00</output>
+            <button class="btn ghost" type="button" id="swBtn">Iniciar</button>
+            <button class="btn ghost" type="button" id="swReset" aria-label="Zerar cronômetro">Zerar</button>
+          </div>
+        </div>
+        <label class="f">Tempo (mm:ss)<input name="time" required pattern="\d{1,2}:\d{2}" placeholder="02:35" inputmode="numeric"></label>
+        <label class="f">Nº de erros<input name="err" type="number" min="0" value="0" required></label>
+        <label class="f">Entendeu o resultado? (C5)
+          <select name="u"><option value="s">Sim</option><option value="n">Não</option><option value="na">Não se aplica</option></select>
+        </label>
+        <label class="f">SEQ (1 a 7)<input name="seq" type="number" min="1" max="7" placeholder="opcional"></label>
+      </div>
+      <label class="f" style="margin-top:12px;display:flex;gap:10px;align-items:center;font-weight:400"><input type="checkbox" name="acc" style="width:22px;height:22px;min-height:0">Houve cancelamento acidental (critério C4)</label>
+      <label class="f" style="margin-top:12px">Falas e observações (Think Aloud)<textarea name="obs" placeholder="Ex.: &quot;Ué, cadê o cardiologista?&quot; e procurou em Mais serviços"></textarea></label>
+      <div class="btn-row">
+        <button class="btn" type="submit">Registrar sessão</button>
+        <button class="btn ghost" type="button" id="exportCsv">Exportar CSV</button>
+        <button class="btn danger" type="button" id="clearLog">Apagar registros</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="table-wrap" style="margin-top:16px">
+    <table>
+      <thead><tr><th>Part.</th><th>Perfil</th><th>Tarefa</th><th>Resultado</th><th>Tempo</th><th>Erros</th><th>C5</th><th>SEQ</th><th>Observações</th><th><span class="sr-only">Ações</span></th></tr></thead>
+      <tbody id="logBody"></tbody>
+    </table>
+  </div>
+
+  <h3>5. Métricas calculadas</h3>
+  <p class="muted small"><b>Taxa de conclusão</b> = concluiu sozinho ÷ tentativas. <b>Tempo na tarefa</b> = mediana e média das tentativas concluídas sozinho. <b>Taxa de erro</b> = total de erros ÷ tentativas (e % de tentativas com pelo menos um erro).</p>
+  <div class="metric-grid" id="metrics"></div>
+
+  <h3>6. A interface resolveu o problema do Desafio 1?</h3>
+  <div class="card" id="verdicts"></div>
+  <div class="card" style="margin-top:16px">
+    <h4>Conclusão do grupo</h4>
+    <p class="small muted">Escreva com base nos critérios acima e nas falas do Think Aloud. Estrutura sugerida: (1) o que os números mostram, (2) os três problemas que mais apareceram, (3) o que muda na próxima versão. O texto fica salvo neste navegador.</p>
+    <label class="f"><span class="sr-only">Conclusão do grupo</span><textarea id="conclusion" style="min-height:160px" placeholder="Ex.: 4 de 5 participantes concluíram T1 sozinhos (80%), atingindo C1. O maior obstáculo foi…"></textarea></label>
+  </div>
+
+  <footer class="foot">
+    MedConnect é um estudo de caso acadêmico. A Rede Vida+, os pacientes, os médicos e os convênios são fictícios.
+  </footer>
+</section>
+
+  </main>
+</div>
+
+<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}</style>
+<script src="assets/site.js"></script>
+</body>
+</html>

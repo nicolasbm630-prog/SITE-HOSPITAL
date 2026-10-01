@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>MedConnect — Protótipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="proto.css">
+</head>
+<body>
+  <div class="stage">
+    <div class="phone">
+      <div class="app" id="app">
+        <header class="hdr" id="hdr"></header>
+        <main class="scr" id="scr" aria-labelledby="h1"></main>
+        <div id="foot"></div>
+        <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+        <div class="sr-only" id="live" aria-live="assertive"></div>
+      </div>
+    </div>
+
+    <aside class="panel" id="panel" aria-label="Painel do apresentador">
+      <h2>Painel do apresentador</h2>
+      <p>Fica fora do celular. Esconda antes do teste com usuários.</p>
+
+      <h3>Ir para a tela</h3>
+      <div class="jump" id="jumpList"></div>
+
+      <h3>Simular situação</h3>
+      <label><input type="checkbox" data-scen="wrongPass">Senha incorreta no próximo login</label>
+      <label><input type="checkbox" data-scen="offline">Sem conexão na próxima confirmação</label>
+      <label><input type="checkbox" data-scen="slotTaken">Horário ocupado na próxima confirmação</label>
+      <p class="small">Cada simulação acontece uma vez e depois se desliga.</p>
+
+      <h3>Tamanho do texto</h3>
+      <div class="row">
+        <button type="button" data-scale="1">100%</button>
+        <button type="button" data-scale="1.25">125%</button>
+        <button type="button" data-scale="1.5">150%</button>
+      </div>
+      <label style="margin-top:10px"><input type="checkbox" id="pContrast">Alto contraste</label>
+
+      <h3>Sessão</h3>
+      <div class="stack" style="display:grid;gap:6px">
+        <button type="button" id="pReset">Reiniciar protótipo (apaga as consultas)</button>
+        <button type="button" id="pHide">Esconder painel (modo teste)</button>
+      </div>
+      <p class="small" style="margin-top:10px">Atalho: Shift + P mostra ou esconde.</p>
+    </aside>
+  </div>
+  <button type="button" class="panel-show" id="pShow" hidden>Painel</button>
+
+  <dialog id="exitDlg" aria-labelledby="exitTitle" aria-describedby="exitDesc">
+    <h2 id="exitTitle">Sair do agendamento?</h2>
+    <p id="exitDesc">As escolhas que você fez até agora não serão salvas. Nada foi agendado ainda.</p>
+    <div class="stack" style="margin-top:18px">
+      <button class="btn" type="button" value="stay" autofocus data-dlg="stay">Continuar agendando</button>
+      <button class="btn sec" type="button" value="leave" data-dlg="leave">Sair</button>
+    </div>
+  </dialog>
+
+  <script src="proto.js"></script>
+</body>
+</html>
